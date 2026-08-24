@@ -75,6 +75,12 @@ If you would like to follow development work more closely check out [@raae’s Y
 
 - Better experience for users with incomplete onboarding
 
+### May 10th - 2021
+
+#### ⭐ Improvements
+
+- Change password form supports auto-complete.
+
 ### May 5th - 2021
 
 #### ⭐ Improvements
