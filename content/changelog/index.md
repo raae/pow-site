@@ -74,7 +74,6 @@ If you would like to follow development work more closely check out [@raae’s Y
 #### ⭐ Improvements
 
 - Better experience for users with incomplete onboarding
-- Better input for days between periods during onboarding
 
 ### May 5th - 2021
 
