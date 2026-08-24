@@ -12,7 +12,7 @@ If you would like to follow development work more closely check out [@raae’s Y
 #### 🐛 Bug Fixes
 
 - **Cycle length prediction stuck after a long gap**  
-  POW! now predicts your cycle length from your six most recent cycles, ignoring one-off extremes, instead of averaging every cycle ever logged. A long gap — for example around pregnancy — no longer skews the prediction for months, and predictions adjust as soon as your body settles into a new rhythm. The timeline change to talk about your "typical" cycle instead of your "average" one.
+  POW! now predicts your cycle length from your six most recent cycles, ignoring one-off extremes, instead of averaging every cycle ever logged. A long gap — for example around pregnancy — no longer skews the prediction for months, and predictions adjust as soon as your body settles into a new rhythm. The timeline changed to talk about your "typical" cycle instead of your "average" one.
 
 ### February 17th - 2022
 
@@ -26,20 +26,20 @@ If you would like to follow development work more closely check out [@raae’s Y
 #### 🐛 Bug Fixes
 
 - **Solid border for logged tags**  
-  Tags logged on a date now always get a solid border, even when they were also predicted for that date. A dashed border now always means the tag is only predicted.
+  Tags logged on a date always get a solid border, even when they were also predicted for that date. A dashed border means the tag is only predicted.
 
 ### June 1st - 2021
 
 #### ⭐ Improvements
 
-- The timeline's "scroll to today" button now takes you to today's date, address bar included.
+- The timeline's "scroll to today" button takes you to today's date, address bar included.
 
 ### May 29th - 2021
 
 #### 🎁 New Features
 
 - **Delete all menstruation tags**  
-  You can now delete all your menstruation tags from your profile's danger zone.
+  Delete all your menstruation tags from your profile's danger zone.
 
 ### May 23rd - 2021
 
@@ -67,7 +67,7 @@ If you would like to follow development work more closely check out [@raae’s Y
 #### ⭐ Improvements
 
 - **Easier to send feedback**  
-  The menu now includes [hello@usepow.app](mailto:hello@usepow.app) for sending us your questions and/or feedback.
+  The menu includes [hello@usepow.app](mailto:hello@usepow.app) for sending us your questions and/or feedback.
 
 ### May 18th - 2021
 
@@ -99,7 +99,7 @@ If you would like to follow development work more closely check out [@raae’s Y
 
 #### ⭐ Improvements
 
-- The three "Remember me" choices are now also available when signing up.
+- The three "Remember me" choices are also available when signing up.
 
 ### February 9th - 2021
 
