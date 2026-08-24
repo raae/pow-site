@@ -14,6 +14,27 @@ If you would like to follow development work more closely check out [@raae’s Y
 - **Cycle length prediction stuck after a long gap**  
   POW! now predicts your cycle length from your six most recent cycles, ignoring one-off extremes, instead of averaging every cycle ever logged. A long gap — for example around pregnancy — no longer skews the prediction for months, and predictions adjust as soon as your body settles into a new rhythm. The timeline change to talk about your "typical" cycle instead of your "average" one.
 
+### February 17th - 2022
+
+#### 🐛 Bug Fixes
+
+- **Removing your menstruation tag(s)**  
+  Fixed a problem where removing your chosen menstruation tag(s) did not work.
+
+### February 16th - 2022
+
+#### 🐛 Bug Fixes
+
+- **Solid border for logged tags**  
+  Tags logged on a date now always get a solid border, even when they were also predicted for that date. A dashed border now always means the tag is only predicted.
+
+### February 11th - 2022
+
+#### 🐛 Bug Fixes
+
+- **Reset password**  
+  Fixed the reset password page redirecting to sign in before you could ask for a temporary password. The page moved to [my.usepow.app/reset](https://my.usepow.app/reset/).
+
 ### May 23rd - 2021
 
 #### 🐛 Bug Fixes
