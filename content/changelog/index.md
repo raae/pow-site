@@ -12,7 +12,7 @@ If you would like to follow development work more closely check out [@raae’s Y
 #### 🐛 Bug Fixes
 
 - **Cycle length prediction stuck after a long gap**  
-  POW! now predicts your cycle length from your six most recent cycles, ignoring one-off extremes, instead of averaging every cycle ever logged. A long gap — for example around pregnancy — no longer skews the prediction for months, and predictions adjust as soon as your body settles into a new rhythm. The timeline changed to talk about your "typical" cycle instead of your "average" one.
+  Predicted cycle length is based on your six most recent cycles instead of an all-time average, so a long gap — for example around pregnancy — no longer skews it.
 
 ### February 17th - 2022
 
