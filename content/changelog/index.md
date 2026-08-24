@@ -7,6 +7,13 @@ description: A log of changes made to POW!
 
 If you would like to follow development work more closely check out [@raae’s YouTube Channel](https://www.youtube.com/channel/UCDlrzlRdM1vGr8nO708KFmQ).
 
+### August 24th - 2026
+
+#### 🐛 Bug Fixes
+
+- **Cycle length prediction stuck after a long gap**  
+  POW! now predicts your cycle length from your six most recent cycles, ignoring one-off extremes, instead of averaging every cycle ever logged. A long gap — for example around pregnancy — no longer skews the prediction for months, and predictions adjust as soon as your body settles into a new rhythm. The timeline change to talk about your "typical" cycle instead of your "average" one.
+
 ### May 23rd - 2021
 
 #### 🐛 Bug Fixes
