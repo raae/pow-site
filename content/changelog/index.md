@@ -28,12 +28,18 @@ If you would like to follow development work more closely check out [@raae’s Y
 - **Solid border for logged tags**  
   Tags logged on a date now always get a solid border, even when they were also predicted for that date. A dashed border now always means the tag is only predicted.
 
-### February 11th - 2022
+### June 1st - 2021
 
-#### 🐛 Bug Fixes
+#### ⭐ Improvements
 
-- **Reset password**  
-  Fixed the reset password page redirecting to sign in before you could ask for a temporary password. The page moved to [my.usepow.app/reset](https://my.usepow.app/reset/).
+- The timeline's "scroll to today" button now takes you to today's date, address bar included.
+
+### May 29th - 2021
+
+#### 🎁 New Features
+
+- **Delete all menstruation tags**  
+  You can now delete all your menstruation tags from your profile's danger zone.
 
 ### May 23rd - 2021
 
@@ -56,17 +62,19 @@ If you would like to follow development work more closely check out [@raae’s Y
 - **404 Page with a fun image**  
   Take a look [my.usepow.app/not-a-page](https://my.usepow.app/not-a-page)
 
+### May 21st - 2021
+
+#### ⭐ Improvements
+
+- **Easier to send feedback**  
+  The menu now includes [hello@usepow.app](mailto:hello@usepow.app) for sending us your questions and/or feedback.
+
 ### May 18th - 2021
 
 #### ⭐ Improvements
 
 - Better experience for users with incomplete onboarding
-
-### May 10th - 2021
-
-#### ⭐ Improvements
-
-- Change password form supports auto-complete.
+- Better input for days between periods during onboarding
 
 ### May 5th - 2021
 
@@ -87,11 +95,24 @@ If you would like to follow development work more closely check out [@raae’s Y
 - **Timezone issues**  
   Fixed entries saved on the wrong date in some time zones.
 
+### March 28th - 2021
+
+#### ⭐ Improvements
+
+- The three "Remember me" choices are now also available when signing up.
+
 ### February 9th - 2021
 
 #### ⭐ Improvements
 
 - New users may cancel, resume and update their subscriptions
+
+### February 7th - 2021
+
+#### 🎁 New Features
+
+- **Quick tagging**  
+  Tap the little plus on a tag in the timeline to quickly add it to that day's entry.
 
 ### February 6th - 2021
 
