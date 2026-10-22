@@ -1,0 +1,43 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The app lives on my.usepow.app
+[[redirects]]
+  from = "/login/"
+  to = "https://my.usepow.app/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "https://my.usepow.app/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/signup/"
+  to = "https://my.usepow.app/signup"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/signup"
+  to = "https://my.usepow.app/signup"
+  status = 301
+  force = true
+
+# Same security headers gatsby-plugin-netlify used to add
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"
+
+# Hashed build assets never change
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

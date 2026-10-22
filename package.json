@@ -2,50 +2,25 @@
   "name": "use-pow",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Use POW! website",
   "author": "Ola",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "jest --watch"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "dependencies": {
-    "@mui/icons-material": "5.6.2",
-    "@mui/material": "5.6.4",
-    "@raae/gatsby-plugin-fathom": "0.0.4",
-    "@raae/gatsby-source-youtube-oembed": "0.4.0",
-    "@raae/gatsby-theme-mui": "0.1.1",
-    "@sindresorhus/slugify": "2.1.0",
-    "axios": "0.27.2",
-    "gatsby": "4",
-    "gatsby-plugin-image": "2.13.0",
-    "gatsby-plugin-manifest": "4.13.0",
-    "gatsby-plugin-netlify": "4.3.1",
-    "gatsby-plugin-react-helmet": "5.13.0",
-    "gatsby-plugin-sharp": "4.13.0",
-    "gatsby-remark-images": "6.13.0",
-    "gatsby-remark-prismjs": "6.13.0",
-    "gatsby-source-filesystem": "4.13.0",
-    "gatsby-transformer-remark": "5.13.0",
-    "gatsby-transformer-sharp": "4.13.0",
-    "playwright-aws-lambda": "0.7.0",
-    "playwright-core": "1.21.1",
-    "prismjs": "1.28.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-helmet": "6.1.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.1",
+    "prismjs": "^1.30.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "babel-jest": "28.0.3",
-    "babel-preset-gatsby": "2.13.0",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "28.0.3",
-    "react-test-renderer": "18.1.0"
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^26.6.5",
+    "typescript": "^6.0.3"
   }
 }

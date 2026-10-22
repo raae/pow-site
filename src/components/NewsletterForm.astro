@@ -1,0 +1,43 @@
+---
+const USERLIST_KEY = import.meta.env.PROD
+  ? "d21dbf05-1525-4323-a256-327355066f92"
+  : "b199b263-3262-435f-a9bc-96a12aa9955d";
+const ACTION = `https://forms.userlist.com/${USERLIST_KEY}/submissions`;
+
+interface Props {
+  class?: string;
+  action?: string;
+}
+
+const { class: className, action = ACTION } = Astro.props;
+---
+
+<form
+  action={action}
+  method="POST"
+  accept-charset="UTF-8"
+  class:list={["flex flex-col", className]}
+>
+  <div class="field mb-4">
+    <input
+      type="text"
+      id="fields_first_name"
+      name="fields[first_name]"
+      placeholder=" "
+    />
+    <label for="fields_first_name">Your first name</label>
+  </div>
+  <div class="field mb-6">
+    <input
+      type="text"
+      id="fields_email"
+      name="fields[email]"
+      autocomplete="email"
+      placeholder=" "
+      required
+    />
+    <label for="fields_email">Your best email&thinsp;*</label>
+  </div>
+
+  <button type="submit" class="button button-primary w-full">Subscribe</button>
+</form>

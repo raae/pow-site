@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "prismjs/themes/prism.css" layer(base);
+
+@theme {
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --color-ink: rgb(0 0 0 / 0.87);
+  --color-ink-muted: rgb(0 0 0 / 0.6);
+  --color-outline: rgb(0 0 0 / 0.23);
+  --color-primary: #d50000;
+  --color-primary-light: #dd3333;
+  --color-primary-dark: #950000;
+  --color-secondary: #8e24aa;
+  --color-secondary-dark: #631976;
+  --color-grey-900: #212121;
+
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 900px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1536px;
+
+  --container-content: 700px;
+  --container-lg: 1200px;
+  --container-xl: 1536px;
+}
+
+/* Big extra-bold headline */
+@utility text-display {
+  font-size: 3.15rem;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-weight: 900;
+}
+
+/* Large light body copy */
+@utility text-lead {
+  font-size: 1.25rem;
+  line-height: 1.43;
+  font-weight: 300;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-white font-sans text-base leading-normal text-ink;
+  }
+}
+
+@layer components {
+  /* Page width wrappers, matching the old MUI containers */
+  .container-content,
+  .container-lg,
+  .container-xl {
+    @apply mx-auto w-full px-4 sm:px-6;
+  }
+  .container-content {
+    @apply max-w-content;
+  }
+  .container-lg {
+    @apply max-w-lg;
+  }
+  .container-xl {
+    @apply max-w-xl;
+  }
+
+  .link {
+    @apply text-secondary underline decoration-secondary/40 hover:decoration-current;
+  }
+
+  .button {
+    @apply inline-flex min-w-16 cursor-pointer items-center justify-center rounded px-4 py-1.5 text-sm leading-[1.75] font-medium uppercase no-underline transition-colors duration-250;
+  }
+  .button-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  .button-small {
+    @apply px-2.5 py-1 text-[0.8125rem];
+  }
+
+  /* Outlined text field with a floating label */
+  .field {
+    @apply relative block;
+  }
+  .field input {
+    @apply block w-full rounded border border-outline bg-transparent px-3.5 py-[15.5px] leading-[1.4375em] text-ink outline-none hover:border-ink focus:border-secondary focus:shadow-[inset_0_0_0_1px_var(--color-secondary)];
+  }
+  .field label {
+    @apply pointer-events-none absolute top-0 left-0 max-w-[calc(100%-24px)] origin-top-left translate-x-3.5 translate-y-4 truncate leading-[1.4375em] text-ink-muted transition-all duration-200;
+  }
+  .field input:focus + label,
+  .field input:not(:placeholder-shown) + label {
+    @apply -ml-[5px] max-w-[calc(133%-32px)] -translate-y-[9px] scale-75 bg-white px-[5px];
+  }
+  .field input:focus + label {
+    @apply text-secondary;
+  }
+
+  /* Rendered markdown */
+  .prose > * {
+    @apply text-lead mb-[1em] max-w-full;
+  }
+  .prose a {
+    color: var(--color-secondary-dark);
+    text-decoration: underline;
+  }
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    margin-top: 1.5em;
+  }
+  .prose h1 {
+    @apply text-display;
+  }
+  .prose h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+  .prose h3 {
+    font-size: 1.75rem;
+    line-height: 1.167;
+    font-weight: 700;
+  }
+  .prose h4 {
+    font-size: 1.25rem;
+    line-height: 1.235;
+    font-weight: 700;
+  }
+  .prose h5 {
+    font-size: 1rem;
+    line-height: 1.334;
+    font-weight: 700;
+  }
+  .prose h6 {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+  .prose blockquote {
+    border: 4px solid var(--color-secondary);
+    padding: 0.5em 1.5em;
+    margin: 1em 0 1.5em;
+  }
+  .prose ul li {
+    margin: 0.5rem 0;
+  }
+  .prose ul li p {
+    display: inline;
+  }
+  .prose ul li::before {
+    content: "➽";
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: var(--color-secondary);
+  }
+  .prose ul li > strong:first-child {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+  }
+  .prose ul li:not(:first-child) > strong:first-child {
+    margin-top: 1rem;
+  }
+  .prose ul li > a:last-child {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+  .prose ol {
+    counter-reset: prose-counter;
+  }
+  .prose ol li {
+    counter-increment: prose-counter;
+    margin: 0.25rem 0;
+  }
+  .prose ol li::before {
+    content: counter(prose-counter) ".";
+    display: inline-block;
+    margin-right: 0.5rem;
+    color: var(--color-secondary);
+    font-weight: 700;
+  }
+  .prose code {
+    font-size: 0.8em !important;
+  }
+  .prose strong {
+    font-weight: 500;
+  }
+  .prose > pre {
+    margin-top: calc(24px + 0.5em);
+    margin-bottom: calc(32px + 0.5em);
+  }
+  .prose img {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+}

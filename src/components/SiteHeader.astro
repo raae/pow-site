@@ -1,0 +1,20 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header
+  class="sticky top-0 z-[1100] flex flex-col bg-white/70 pt-2 pb-1 backdrop-blur-[20px]"
+>
+  <div class="container-xl">
+    <div class="flex min-h-14 items-center sm:min-h-16">
+      <a
+        href="/"
+        class="-ml-3 inline-flex min-w-16 items-center justify-center rounded px-2 py-1.5 hover:bg-primary/4"
+      >
+        <Logo class="h-10" />
+      </a>
+      <a href="/login/" class="link mr-6 ml-auto">Log In</a>
+      <a href="/signup/" class="button button-primary">Get started</a>
+    </div>
+  </div>
+</header>
