@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import { site } from "../site";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  author?: string;
+  type?: string;
+  robots?: string;
+  lang?: string;
+}
+
+const { title, description, author, type, robots, lang } = Astro.props;
+
+const canonical = `${site.canonicalUrl}${Astro.url.pathname}`;
+const socialImage = `${site.url}/logo.jpg`;
+const twitterCreator = author || site.twitterCreator;
+---
+
+<!doctype html>
+<html lang={lang || "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>{title}</title>
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
+
+    <meta name="description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={type || "website"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={site.twitterSite} />
+    <meta name="twitter:creator" content={twitterCreator} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image:src" content={socialImage} />
+
+    <meta name="robots" content={robots || "index"} />
+
+    <script
+      is:inline
+      src="https://cdn.usefathom.com/script.js"
+      data-site={site.fathom.site}
+      data-honor-dnt="false"
+      data-auto="true"
+      data-canonical="true"
+      data-included-domains={site.fathom.includedDomains}
+      data-spa="auto"
+      defer></script>
+  </head>
+  <body>
+    <SiteHeader />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

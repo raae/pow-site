@@ -1,0 +1,114 @@
+---
+import { getEntry, render, type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import path from "node:path";
+
+import Layout from "../layouts/Layout.astro";
+import NewsletterForm from "./NewsletterForm.astro";
+import PlayIcon from "./PlayIcon.astro";
+import { getVideo } from "../data/videos";
+
+interface Props {
+  page: CollectionEntry<"pages">;
+}
+
+const { page } = Astro.props;
+const { title, sections = [] } = page.data;
+const { Content } = await render(page);
+
+// Section bodies point to markdown files relative to the page's index.md
+const renderBody = async (body: string) => {
+  const id = path.posix.join(path.posix.dirname(page.id), body).replace(/\.md$/, "");
+  const entry = await getEntry("sections", id);
+  if (!entry) throw new Error(`Section body "${body}" not found for page "${page.id}"`);
+  return (await render(entry)).Content;
+};
+
+const renderedSections = await Promise.all(
+  sections.map(async (section) => ({
+    ...section,
+    Body: section.body ? await renderBody(section.body) : undefined,
+    videos: section.videos?.map((video) => ({ ...video, ...getVideo(video.id) })),
+  }))
+);
+---
+
+<Layout {...page.data}>
+  <header class="pt-24">
+    <div class="container-content">
+      <h1 class="text-base leading-[1.35] uppercase">{title}</h1>
+    </div>
+  </header>
+
+  <div class="container-content">
+    <div class="prose"><Content /></div>
+  </div>
+
+  {
+    renderedSections.map(({ title, subtitle, Body, cta, form, videos, image, imageAlt }) => (
+      <section class="py-12">
+        <div class="container-content">
+          {title && <h2 class="text-display mb-10">{title}</h2>}
+          {subtitle && <p class="text-lead mb-[0.35em]">{subtitle}</p>}
+
+          {Body && (
+            <div class="prose">
+              <Body />
+            </div>
+          )}
+
+          {cta?.path && cta?.label && (
+            <a href={cta.path} class="button button-primary my-4">
+              {cta.label}
+            </a>
+          )}
+
+          {form === "newsletter" && <NewsletterForm class="not-first:mt-10" />}
+
+          {videos && (
+            <ul class="-mx-4 grid grid-cols-2 gap-2.5 not-first:mt-10">
+              {videos.map(({ title, url, thumbnail, action }, index, { length }) => (
+                <li
+                  class:list={[
+                    "relative flex overflow-hidden",
+                    { "col-span-2": index === length - 1 && index % 2 === 0 },
+                  ]}
+                >
+                  <Image
+                    src={thumbnail}
+                    alt={title}
+                    widths={[240, 480]}
+                    sizes="(min-width: 480px) 480px, 100vw"
+                    class="aspect-video max-h-[270px] w-full object-cover"
+                  />
+                  <a
+                    href={url}
+                    aria-label={`Play ${title}`}
+                    class="button button-primary button-small absolute right-0 bottom-0 rounded-none rounded-tl normal-case"
+                  >
+                    {action || "Watch on YouTube"}
+                    <span class="mr-[-2px] ml-2 inline-flex">
+                      <PlayIcon />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {image && (
+            <div class="-mx-4 not-first:mt-10">
+              <Image
+                src={image}
+                alt={imageAlt || ""}
+                widths={[480, 700, 1000, 1333]}
+                sizes="(min-width: 700px) 700px, 100vw"
+                class="h-auto w-full"
+              />
+            </div>
+          )}
+        </div>
+      </section>
+    ))
+  }
+</Layout>

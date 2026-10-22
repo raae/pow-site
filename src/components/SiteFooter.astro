@@ -1,0 +1,25 @@
+---
+import { site } from "../site";
+
+const { greeting, contact } = site;
+---
+
+<footer class="pt-24 pb-8">
+  <div
+    class="container-lg flex flex-col justify-between gap-6 sm:flex-row sm:*:w-1/3"
+  >
+    <p class="text-left [&_a]:text-inherit [&_a]:underline" set:html={greeting} />
+
+    <div class="sm:text-center">
+      <p>Sign up for the</p>
+      <a href="/newsletter/" class="link">POW! Newsletter</a>
+    </div>
+
+    <div class="sm:text-right">
+      <a href={`mailto:${contact.email}`} class="text-inherit underline">
+        {contact.email}
+      </a>
+      <p>{contact.address}</p>
+    </div>
+  </div>
+</footer>

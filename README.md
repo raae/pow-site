@@ -1,54 +1,50 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# POW! website
 
-## 🚀 Quick start
+The marketing site for [POW!](https://www.usepow.app), the privacy-first menstrual cycle journal. Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com), deployed on Netlify.
 
-1.  **Create a Gatsby site.**
+## Develop
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+```shell
+nvm use
+npm install
+npm run dev
+```
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+The site runs at http://localhost:4321. `npm run build` builds to `dist/`, and `npm run preview` serves that build.
 
-2.  **Start developing.**
+## Content
 
-    Navigate into your new site’s directory and start it up.
+Every `index.md` in `content/` becomes a page, and its folder is the url:
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- `content/index/index.md` → `/`
+- `content/changelog/index.md` → `/changelog/`
+- `content/newsletter/thank-you/index.md` → `/newsletter/thank-you/`
+- `content/404/index.md` → the 404 page
 
-3.  **Open the code and start customizing!**
+The markdown in an `index.md` is rendered at the top of the page. Pages can also list `sections` in the frontmatter:
 
-    Your site is now running at http://localhost:8000!
+```yaml
+sections:
+  - title: Your private data # big headline
+    subtitle: Short intro text
+    body: ./your-private-data.md # markdown file, relative to index.md
+    cta:
+      path: /signup
+      label: Yes to privacy
+    form: newsletter # shows the newsletter sign-up form
+    image: ../assets/pow-family.jpg
+    imageAlt: Describe the image
+    videos:
+      - id: Bk1jonYPFD4 # YouTube id
+        action: Optional button text
+```
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+The schema lives in `src/content.config.ts`.
 
-4.  **Learn more**
+### Adding a YouTube video
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Thumbnails are stored in `src/assets/youtube/<id>.jpg` so the site doesn't load anything from YouTube. To add a video, save its thumbnail there (`https://img.youtube.com/vi/<id>/hqdefault.jpg`) and add its title to `src/data/videos.ts`.
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Styling
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Tailwind, configured in `src/styles/global.css`. The theme colors and the shared `prose`, `button`, `link` and `field` classes are defined there too.
